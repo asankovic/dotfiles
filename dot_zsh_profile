@@ -1,0 +1,104 @@
+# Note: this file is intended to be sourced in .zshrc to avoid any automatic changes (e.g. by installed tools)
+# example: "source ~/.zsh_profile"
+
+alias ffs=sudo
+alias cl='clear'
+
+# CLI
+alias cat=bat
+alias cd="z"
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias lt="eza --tree --level=3 --long --icons --git --no-filesize --no-time --no-user --no-permissions -a --git-ignore"
+alias la="eza -la --icons --git"
+alias ld="eza --tree --only-dirs --icons --level=2 --git -a"
+
+# Git
+alias ga="git add"
+alias gaa="git add -A"
+alias gap="git add -p"
+alias gc="git commit -m"
+alias gca="git commit -a -m"
+alias gpu="git push"
+alias gpl="git pull"
+alias gf="git fetch"
+alias gs="git status"
+alias gd="git diff"
+alias gco="git checkout"
+alias gb="git branch"
+alias gba="git branch -a"
+alias gr='git remote'
+alias grs='git restore --staged'
+alias gsh='git stash'
+alias gsw='git switch'
+alias gl="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(black)(%ch) %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
+
+# Docker
+alias d="docker"
+alias db="docker build"
+alias dr="docker run"
+alias dp="docker ps"
+alias dpa="docker ps -a"
+alias dx="docker exec -it"
+alias dc="docker compose"
+alias di="docker image"
+alias dl="docker logs"
+alias dv="docker volume"
+
+# Directories
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+# Autosuggestion
+bindkey '^e' autosuggest-execute
+bindkey '^a' autosuggest-accept
+bindkey '^t' autosuggest-toggle
+bindkey '^f' vi-forward-word
+bindkey '^b' vi-backward-word
+bindkey '^k' up-line-or-search
+bindkey '^j' down-line-or-search
+
+# Switching vim modes in terminal
+bindkey jk vi-cmd-mode
+
+source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+type starship_zle-keymap-select >/dev/null || \
+{
+  eval "$(starship init zsh)"
+}
+
+eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
+# Lazy load autocomplete
+initautocomplete() {
+  autoload -Uz compinit && compinit
+
+  if command -v kubectl >/dev/null 2>&1; then
+    source <(kubectl completion zsh)
+  fi
+
+  if command -v ng >/dev/null 2>&1; then
+    source <(ng completion script)
+  fi
+
+  if command -v docker >/dev/null 2>&1; then
+    source <(docker completion zsh)
+  fi
+}
