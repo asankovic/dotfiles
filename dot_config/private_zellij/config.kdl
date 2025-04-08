@@ -313,6 +313,8 @@ plugins {
     }
 }
 
+default_shell "zsh"
+
 pane_frames false
  
 show_startup_tips false
