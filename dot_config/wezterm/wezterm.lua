@@ -19,6 +19,6 @@ config.font = wezterm.font 'FiraCode Nerd Font'
 config.enable_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
 -- config.window_decorations = 'RESIZE'
-config.default_prog = { '/usr/bin/zsh' }
+config.default_prog = { '/usr/bin/zsh', '-l' }
 
 return config
