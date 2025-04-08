@@ -1,0 +1,24 @@
+[user]
+  email = alen5.sankovic@gmail.com
+  name = Alen Sanković
+[credential]
+	helper = store
+[core]
+	pager = delta
+	autocrlf = input
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  side-by-side = true
+  line-numbers = true
+[delta "interactive"]
+  keep-plus-minus-markers = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
