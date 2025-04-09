@@ -18,7 +18,14 @@ config.font = wezterm.font 'FiraCode Nerd Font'
 -- Window
 config.enable_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
--- config.window_decorations = 'RESIZE'
+config.window_decorations = 'RESIZE'
 config.default_prog = { '/usr/bin/zsh', '-l' }
+
+-- Clipboard
+local act = wezterm.action
+config.keys = {
+  { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
+  { key = 'v', mods = 'CTRL', action = act.PasteFrom 'PrimarySelection' },
+}
 
 return config
