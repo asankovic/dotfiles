@@ -71,8 +71,10 @@ type starship_zle-keymap-select >/dev/null || \
   eval "$(starship init zsh)"
 }
 
+eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
+eval "$(atuin init zsh)"
 
 _fzf_comprun() {
   local command=$1
