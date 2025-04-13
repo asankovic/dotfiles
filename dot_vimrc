@@ -23,8 +23,8 @@ set number
 set tabstop=2
 set shiftwidth=2
 set expandtab
-" set autoindent
-" set smartindent
+set autoindent
+set smartindent
 set shiftround
 set breakindent
 set scrolloff=10
