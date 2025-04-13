@@ -3,6 +3,7 @@
 
 alias ffs=sudo
 alias cl='clear'
+alias nv='nvim'
 
 # CLI
 alias cat=bat
