@@ -6,10 +6,6 @@ return {
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				integrations = {
-					notify = true,
-					noice = true,
-				},
 				color_overrides = {
 					mocha = {
 						base = "#11111B",

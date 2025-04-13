@@ -11,7 +11,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "asankovic.plugins" }, { import = "asankovic.plugins.lsp" } }, {
+-- WARNING: not using neovim for development so those plugin configurations are not up to date
+-- local plugins = { { import = "asankovic.plugins.extended" }, { import = "asankovic.plugins.lsp" } }
+
+local plugins = { { import = "asankovic.plugins.minimal" } }
+require("lazy").setup(plugins, {
 	checker = {
 		enabled = true,
 		notify = false,
