@@ -26,8 +26,12 @@ brew "kubernetes-cli"
 brew "kubectx"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # General purpose fuzzy finder TUI
@@ -48,6 +52,4 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Cross-shell prompt for astronauts
-brew "starship"
 cask "font-fira-code-nerd-font"
