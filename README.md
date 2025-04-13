@@ -1,8 +1,9 @@
 # Dotfiles
 
-This repo contains the configuration to setup tools on my machines. This is using [Chezmoi](https://chezmoi.io), the dotfile manager to setup the install.
+This repository contains my personal configuration setup for provisioning tools and settings across my machines using [chezmoi](https://chezmoi.io), a dotfiles manager.
 
-This configuration is created mainly for [Bluefin](https://projectbluefin.io/) and may be missing some things for other distributions or OSes.
+While this setup is primarily tailored for [Bluefin Linux](https://projectbluefin.io/), it may require adjustments or additional components to work seamlessly on other distributions or operating systems.
+
 
 ## Run
 
