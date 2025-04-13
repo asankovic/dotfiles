@@ -316,8 +316,10 @@ plugins {
 default_shell "zsh"
 
 pane_frames false
- 
+
 show_startup_tips false
+
+mouse_mode false
 
 themes {
   dark-catppuccin-mocha {

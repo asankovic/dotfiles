@@ -25,7 +25,6 @@ config.default_prog = { '/usr/bin/zsh', '-l' }
 local act = wezterm.action
 config.keys = {
   { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
-  { key = 'v', mods = 'CTRL', action = act.PasteFrom 'PrimarySelection' },
 }
 
 return config
