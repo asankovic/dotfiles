@@ -2,12 +2,20 @@
 brew "atuin"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Yet another cross-platform graphical process/system monitor
+brew "bottom"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Human-friendly and fast alternative to cut and (sometimes) awk
+brew "choose-rust"
+# Power of curl, ease of use of httpie
+brew "curlie"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
+# More intuitive version of du in rust
+brew "dust"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -16,6 +24,8 @@ brew "fd"
 brew "fzf"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Ping, but with a graph
+brew "gping"
 # Kubernetes package manager
 brew "helm"
 # Kubernetes CLI To Manage Your Clusters In Style!
@@ -28,8 +38,12 @@ brew "kubectx"
 brew "lazygit"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Modern replacement for ps written in Rust
+brew "procs"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Intuitive find & replace CLI
+brew "sd"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Very fast implementation of tldr in Rust
