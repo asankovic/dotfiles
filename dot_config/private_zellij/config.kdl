@@ -118,7 +118,7 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
-        bind "Ctrl x" { SwitchToMode "normal"; }
+        bind "Ctrl o" { SwitchToMode "normal"; }
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
                 floating true
@@ -145,14 +145,9 @@ keybinds clear-defaults=true {
         bind "Alt i" { MoveTab "left"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
+        bind "Alt x" { CloseFocus; SwitchToMode "normal"; }
         bind "Ctrl q" { Quit; }
-        bind "Alt f" {
-            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/monocle.wasm" {
-                floating true
-            };
-            SwitchToMode "Normal"
-        }
-        bind "Ctrl y" {
+        bind "Alt y" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
                 "LOAD_ZELLIJ_BINDINGS"              "false"
                 "Lock"                              "Ctrl + L"
@@ -193,7 +188,6 @@ keybinds clear-defaults=true {
                 "Vertical / Horizontal Layout Swap" "Alt + ] / ["
                 "Toggle Floating Pane"              "Alt + W"
                 "Move Tab Left / Right"             "Alt + I / O"
-                "Find Files or Folders"             "Alt + F"
                 floating true
         }
     }
@@ -202,7 +196,7 @@ keybinds clear-defaults=true {
         bind "Ctrl h" { SwitchToMode "move"; }
     }
     shared_except "locked" "session" {
-        bind "Ctrl x" { SwitchToMode "session"; }
+        bind "Ctrl o" { SwitchToMode "session"; }
     }
     shared_except "locked" "scroll" {
         bind "Alt left" { MoveFocusOrTab "left"; }
@@ -312,6 +306,10 @@ plugins {
         welcome_screen true
     }
 }
+
+session_name "look-at-all-those-chickens"
+
+attach_to_session true
 
 default_shell "zsh"
 

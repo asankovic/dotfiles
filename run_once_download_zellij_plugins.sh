@@ -5,7 +5,6 @@ PLUGIN_DIR="$HOME/.config/zellij/plugins"
 mkdir -p "$PLUGIN_DIR"
 
 declare -A plugins=(
-  ["monocle"]="https://github.com/imsnif/monocle/releases/latest/download/monocle.wasm"
   ["zellij_forgot"]="https://github.com/karimould/zellij-forgot/releases/download/latest/zellij_forgot.wasm"
   ["zjstatus"]="https://github.com/dj95/zjstatus/releases/latest/downloads/zjstatus.wasm"
 )
