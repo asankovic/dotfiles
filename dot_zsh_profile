@@ -52,17 +52,13 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
-# Autosuggestion
-bindkey '^e' autosuggest-execute
-bindkey '^a' autosuggest-accept
-bindkey '^t' autosuggest-toggle
+# Bindkeys
+bindkey -e
 bindkey '^f' vi-forward-word
 bindkey '^b' vi-backward-word
 bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
-
-# Switching vim modes in terminal
-bindkey jk vi-cmd-mode
+bindkey 'jk' vi-cmd-mode
 
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
