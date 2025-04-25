@@ -14,6 +14,7 @@ config.color_schemes = {
 config.color_scheme = 'DarkCatppuccinMocha'
 config.font_size = 11.0
 config.font = wezterm.font 'FiraCode Nerd Font'
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 -- Window
 config.enable_tab_bar = false
