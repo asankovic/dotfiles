@@ -10,3 +10,11 @@
 
     - name: Download bat theme
       script: ./download_bat_theme.sh
+
+    - name: Install Flatpaks
+      community.general.flatpak:
+        name:
+          - app.zen_browser.zen
+          - com.brave.Browser
+          - com.spotify.Client
+          - org.wezfurlong.wezterm
