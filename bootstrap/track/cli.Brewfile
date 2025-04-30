@@ -38,6 +38,8 @@ brew "kubectx"
 brew "lazygit"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# CLI for Postgres with auto-completion and syntax highlighting
+brew "pgcli"
 # Modern replacement for ps written in Rust
 brew "procs"
 # Search tool like grep and The Silver Searcher
