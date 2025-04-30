@@ -13,16 +13,17 @@ mkdir -p "$THEME_DIR"
 
 if [ -f "$THEME_FILE" ]; then
     echo "The theme is already downloaded."
-else
-    echo "Downloading the Catppuccin Mocha theme..."
-    curl -L -o "$THEME_FILE" "$THEME_URL"
-    if [ $? -eq 0 ]; then
-        echo "Theme downloaded successfully."
-
-        echo "Rebuilding bat cache..."
-        bat cache --build
-    else
-        echo "Failed to download the theme."
-        exit 1
-    fi
+    exit 0
 fi
+
+echo "Downloading the Catppuccin Mocha theme..."
+
+if ! curl -L -o "$THEME_FILE" "$THEME_URL"; then
+    echo "Error: Failed to download the theme." >&2
+    exit 1
+fi
+
+echo "Theme downloaded successfully."
+
+echo "Rebuilding bat cache..."
+bat cache --build

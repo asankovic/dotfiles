@@ -1,0 +1,12 @@
+---
+- name: Machine setup
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: Download zellij plugins
+      script: ./download_zellij_plugins.sh
+
+    - name: Download bat theme
+      script: ./download_bat_theme.sh
