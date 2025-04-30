@@ -1,9 +1,10 @@
 # Note: this file is intended to be sourced in .zshrc to avoid any automatic changes (e.g. by installed tools)
 # example: "source ~/.zsh_profile"
 
-alias ffs=sudo
-alias cl='clear'
-alias nv='nvim'
+alias pls="sudo"
+alias cl="clear"
+alias nv="nvim"
+alias gg="lazygit"
 
 # CLI
 alias cat=bat
