@@ -1,24 +1,46 @@
 [user]
   email = alen5.sankovic@gmail.com
   name = Alen Sanković
-[credential]
-	helper = store
+
+[commit]
+  template = ~/.config/git/template
+
 [core]
-	pager = delta
-	autocrlf = input
+  pager = delta
+  autocrlf = input
+  whitespace = error
+
+[status]
+  branch = true
+  showStash = true
+
+[push]
+  autoSetupRemote = true
+  followTags = true
+
 [pull]
-	ff = only
+  rebase = true
+
+[rebase]
+  autoStash = true
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
 [interactive]
   diffFilter = delta --color-only --features=interactive
+
 [delta]
   navigate = true    # use n and N to move between diff sections
   side-by-side = true
   line-numbers = true
+  dark = true
+
 [delta "interactive"]
   keep-plus-minus-markers = true
+
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
+
 [diff]
   colorMoved = default

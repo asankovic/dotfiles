@@ -1,0 +1,19 @@
+# feat(<scope>): 
+# fix(<scope>): 
+# style(<scope>): 
+# ci(<scope>): 
+# deploy(<scope>): 
+# chore(<scope>): 
+# docs(<scope>): 
+# refactor(<scope>): 
+# perf(<scope>): 
+# test(<scope>): 
+# debug(<scope>): 
+
+# <Body>
+# Wrap lines at ~72 characters if needed
+
+# <Footer>
+# For breaking changes or issue references:
+# BREAKING CHANGE: 
+# Closes #123
