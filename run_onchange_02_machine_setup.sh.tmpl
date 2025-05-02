@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
 # setup.yml hash: {{ include "bootstrap/import/setup.yml" | sha256sum }}
+
 # download_bat_theme.sh hash: {{ include "bootstrap/import/download_bat_theme.sh" | sha256sum }}
 # download_zellij_plugins.sh hash: {{ include "bootstrap/import/download_zellij_plugins.sh" | sha256sum }}
+# zen_browser.py hash: {{ include "bootstrap/import/zen_browser.py" | sha256sum }}
+
+# userChrome.css hash: {{ include "bootstrap/track/userChrome.css" | sha256sum }}
+# userContent.css hash: {{ include "bootstrap/track/userContent.css" | sha256sum }}
+# zen-logo-mocha.svg hash: {{ include "bootstrap/track/zen-logo-mocha.svg" | sha256sum }}
 
 if command -v ansible-playbook &> /dev/null; then
     ansible-playbook {{ joinPath .chezmoi.sourceDir "bootstrap/import/setup.yml" | quote }} -v

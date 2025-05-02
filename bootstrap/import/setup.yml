@@ -18,3 +18,8 @@
           - com.brave.Browser
           - com.spotify.Client
           - org.wezfurlong.wezterm
+      when: ansible_distribution == "Fedora"
+
+    - name: Copy Zen Browser theme
+      script: ./zen_browser.py
+      when: ansible_distribution == "Fedora"
