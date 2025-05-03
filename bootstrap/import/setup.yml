@@ -12,7 +12,26 @@
         create: yes
 
     - name: Download zellij plugins
-      script: ./download_zellij_plugins.sh
+      block:
+        - name: Ensure plugin directory exists
+          ansible.builtin.file:
+            path: "{{ zellij_plugin_dir }}"
+            state: directory
+            mode: '0755'
+
+        - name: Download plugins if they don't exist
+          ansible.builtin.get_url:
+            url: "{{ item.value }}"
+            dest: "{{ zellij_plugin_dir }}/{{ item.key }}.wasm"
+            mode: '0644'
+          loop: "{{ zellij_plugins | dict2items }}"
+          loop_control:
+            label: "{{ item.key }}"
+      vars:
+        zellij_plugin_dir: "{{ ansible_env.HOME }}/.config/zellij/plugins"
+        zellij_plugins:
+          zellij_forgot: "https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm"
+          zjstatus: "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"
 
     - name: Download bat theme
       script: ./download_bat_theme.sh
