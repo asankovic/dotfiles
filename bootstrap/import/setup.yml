@@ -36,15 +36,16 @@
     - name: Download bat theme
       script: ./download_bat_theme.sh
 
-    - name: Install Flatpaks
-      community.general.flatpak:
-        name:
-          - app.zen_browser.zen
-          - com.brave.Browser
-          - com.spotify.Client
-          - org.wezfurlong.wezterm
+    - name: Install and configure Flatpaks
       when: ansible_distribution == "Fedora"
+      block:
+        - name: Install Flatpaks
+          community.general.flatpak:
+            name:
+              - app.zen_browser.zen
+              - com.brave.Browser
+              - com.spotify.Client
+              - org.wezfurlong.wezterm
 
-    - name: Copy Zen Browser theme
-      script: ./zen_browser.py
-      when: ansible_distribution == "Fedora"
+        - name: Copy Zen Browser theme
+          script: ./zen_browser.py
