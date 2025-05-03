@@ -5,6 +5,12 @@
   gather_facts: true
 
   tasks:
+    - name: Ensure custom zsh profile is loaded
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        line: "source ~/.zsh_profile"
+        create: yes
+
     - name: Download zellij plugins
       script: ./download_zellij_plugins.sh
 
