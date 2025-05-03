@@ -33,8 +33,43 @@
           zellij_forgot: "https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm"
           zjstatus: "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"
 
-    - name: Download bat theme
-      script: ./download_bat_theme.sh
+    - name: Configure bat theme
+      block:
+        - name: Chech if bat is installed
+          ansible.builtin.command: which bat
+          register: bat_check
+          failed_when: bat_check.rc != 0
+          changed_when: false
+
+        - name: Get bat config directory
+          ansible.builtin.command: bat --config-dir
+          register: bat_config
+          changed_when: false
+
+        - name: Set theme directory and path
+          set_fact:
+            bat_theme_dir: "{{ bat_config.stdout }}/themes"
+            bat_theme_file: "{{ bat_config.stdout }}/themes/{{ bat_theme_name }}"
+
+        - name: Ensure themes directory exists
+          ansible.builtin.file:
+            path: "{{ bat_theme_dir }}"
+            state: directory
+            mode: '0755'
+
+        - name: Download the theme if it doesn't exist
+          get_url:
+            url: "{{ bat_theme_url }}"
+            dest: "{{ bat_theme_file }}"
+            mode: '0644'
+          register: downloaded_bat_theme
+
+        - name: Rebuild bat cache
+          ansible.builtin.command: bat cache --build
+          when: downloaded_bat_theme.changed
+      vars:
+        bat_theme_url: "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme"
+        bat_theme_name: "Catppuccin Mocha.tmTheme"
 
     - name: Install and configure Flatpaks
       when: ansible_distribution == "Fedora"
