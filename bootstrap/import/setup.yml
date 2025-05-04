@@ -84,3 +84,9 @@
 
         - name: Copy Zen Browser theme
           script: ./zen_browser.py
+
+    - name: Copy desktop background
+      ansible.builtin.copy:
+        src: ../tree.jpg
+        dest: "{{ ansible_env.HOME }}/Pictures/tree.jpg"
+        mode: '0644'
