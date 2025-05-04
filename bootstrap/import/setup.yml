@@ -111,3 +111,38 @@
         dconf_path: "{{ dconf_item.value }}"
         tracked_dconf: "../track/gnome/{{ dconf_item.key }}.ini"
       when: ansible_distribution == "Fedora"
+
+    - name: Install gnome extensions
+      when: ansible_distribution == "Fedora"
+      block:
+        - name: Create virtual environment
+          ansible.builtin.command: python3 -m venv {{ venv_path }}
+          args:
+            creates: "{{ venv_path }}"
+
+        - name: Install gnome-extensions-cli in virtualenv
+          ansible.builtin.command: "{{ venv_path }}/bin/pip install --upgrade gnome-extensions-cli"
+          args:
+            creates: "{{ venv_path }}/bin/gnome-extensions-cli"
+
+        - name: Dump current extensions to a temp file
+          ansible.builtin.shell: "gnome-extensions list > {{ temp_current_extensions }}"
+          args:
+            executable: /bin/bash
+          register: dump_result
+          changed_when: false
+
+        - name: Check if extensions differ
+          ansible.builtin.shell: "diff -q {{ temp_current_extensions }} {{ tracked_extensions }}"
+          register: diff_result
+          ignore_errors: true
+          changed_when: diff_result.rc != 0
+
+        - name: Install GNOME extension using gext
+          ansible.builtin.command: "{{ venv_path }}/bin/gext install {{ item }}"
+          loop: "{{ lookup('file', tracked_extensions).splitlines() }}"
+          when: diff_result.rc != 0
+      vars:
+        venv_path: "/tmp/gext_venv"
+        temp_current_extensions: "/tmp/current_gnome_extensions.txt"
+        tracked_extensions: "../track/gnome/gnome-extensions.txt"

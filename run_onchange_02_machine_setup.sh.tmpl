@@ -4,15 +4,17 @@
 
 # zen_browser.py hash: {{ include "bootstrap/import/zen_browser.py" | sha256sum }}
 
-# userChrome.css hash: {{ include "bootstrap/track/userChrome.css" | sha256sum }}
-# userContent.css hash: {{ include "bootstrap/track/userContent.css" | sha256sum }}
-# zen-logo-mocha.svg hash: {{ include "bootstrap/track/zen-logo-mocha.svg" | sha256sum }}
+# userChrome.css hash: {{ include "bootstrap/track/zen/userChrome.css" | sha256sum }}
+# userContent.css hash: {{ include "bootstrap/track/zen/userContent.css" | sha256sum }}
+# zen-logo-mocha.svg hash: {{ include "bootstrap/track/zen/zen-logo-mocha.svg" | sha256sum }}
 
 # background.ini hash: {{ include "bootstrap/track/gnome/background.ini" | sha256sum }}
 # interface.ini hash: {{ include "bootstrap/track/gnome/interface.ini" | sha256sum }}
 # screensaver.ini hash: {{ include "bootstrap/track/gnome/screensaver.ini" | sha256sum }}
 # shell.ini hash: {{ include "bootstrap/track/gnome/shell.ini" | sha256sum }}
 # wm.ini hash: {{ include "bootstrap/track/gnome/wm.ini" | sha256sum }}
+
+# gnome-extensions.txt hash: {{ include "bootstrap/track/gnome/gnome-extensions.txt" | sha256sum }}
 
 if command -v ansible-playbook &> /dev/null; then
     ansible-playbook {{ joinPath .chezmoi.sourceDir "bootstrap/import/setup.yml" | quote }}
