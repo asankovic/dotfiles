@@ -93,3 +93,21 @@
         src: ../tree.jpg
         dest: "{{ ansible_env.HOME }}/Pictures/tree.jpg"
         mode: '0644'
+
+    - name: Import gnome dconf
+      include_tasks: dconf_apply.yml
+      loop: "{{ dconfs | dict2items }}"
+      loop_control:
+        loop_var: dconf_item
+        label: "{{ dconf_item.key }}"
+      vars:
+        temp_current_dconf: "/tmp/current_gnome_config.dconf"
+        dconfs:
+          wm: "/org/gnome/desktop/wm/"
+          background: "/org/gnome/desktop/background/"
+          screensaver: "/org/gnome/desktop/screensaver/"
+          interface: "/org/gnome/desktop/interface/"
+          shell: "/org/gnome/shell/"
+        dconf_path: "{{ dconf_item.value }}"
+        tracked_dconf: "../track/gnome/{{ dconf_item.key }}.ini"
+      when: ansible_distribution == "Fedora"

@@ -1,0 +1,18 @@
+- name: Dump current dconf settings to a temp file ({{ dconf_path }})
+  ansible.builtin.shell: "dconf dump {{ dconf_path }} > {{ temp_current_dconf }}"
+  args:
+    executable: /bin/bash
+  register: dump_result
+  changed_when: false
+
+- name: Check if dconf settings differ ({{ dconf_path }})
+  ansible.builtin.shell: "diff -q {{ temp_current_dconf }} {{ tracked_dconf }}"
+  register: diff_result
+  ignore_errors: true
+  changed_when: diff_result.rc != 0
+
+- name: Apply new dconf settings only if they differ ({{ dconf_path }})
+  ansible.builtin.shell: "dconf load {{ dconf_path }} < {{ tracked_dconf }}"
+  args:
+    executable: /bin/bash
+  when: diff_result.rc != 0
