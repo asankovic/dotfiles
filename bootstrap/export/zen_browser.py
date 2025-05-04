@@ -12,7 +12,7 @@ def get_chezmoi_track_dir_path():
         print(f"Failed to fetch the chezmoi directory: {chezmoi_source_path.stderr}", file=sys.stderr)
         return None
 
-    return os.path.join(chezmoi_source_path.stdout.strip(), "bootstrap", "track")
+    return os.path.join(chezmoi_source_path.stdout.strip(), "bootstrap", "track", "zen")
 
 def get_zen_themes_dir_path():
     zen_profile = os.path.expanduser("~/.var/app/app.zen_browser.zen/.zen")

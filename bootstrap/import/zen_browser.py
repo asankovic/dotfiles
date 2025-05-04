@@ -8,7 +8,7 @@ import filecmp
 
 def get_chezmoi_track_dir_path():
     # have to hardcode path because two chezmoi commands cannot run at the same time (apply and source-path)
-    return os.path.expanduser("~/.local/share/chezmoi/bootstrap/track")
+    return os.path.expanduser("~/.local/share/chezmoi/bootstrap/track/zen")
 
 def get_zen_themes_dir_path():
     zen_profile = os.path.expanduser("~/.var/app/app.zen_browser.zen/.zen")
