@@ -1,3 +1,5 @@
+tap "jesseduffield/lazydocker"
+tap "jesseduffield/lazygit"
 # Automate deployment, configuration, and upgrading
 brew "ansible"
 # Improved shell history for zsh, bash, fish and nushell
@@ -36,8 +38,6 @@ brew "k9s"
 brew "kubernetes-cli"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
-# Simple terminal UI for git commands
-brew "lazygit"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # CLI for Postgres with auto-completion and syntax highlighting
@@ -70,4 +70,8 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# A simple terminal UI for docker, written in Go
+brew "jesseduffield/lazydocker/lazydocker"
+# A simple terminal UI for git commands, written in Go
+brew "jesseduffield/lazygit/lazygit"
 cask "font-fira-code-nerd-font"
