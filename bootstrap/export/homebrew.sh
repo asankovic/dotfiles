@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BREWFILE="$(chezmoi source-path)/bootstrap/track/cli.Brewfile"
+BREWFILE="$(chezmoi source-path)/bootstrap/track/homebrew/cli.Brewfile"
 
 if ! command -v brew >/dev/null || ! command -v sd >/dev/null; then
   echo "Brewfile not exported. Please ensure both Homebrew and 'sd' are installed, then try again."

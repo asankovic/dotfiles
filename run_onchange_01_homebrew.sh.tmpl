@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# cli.Brewfile hash: {{ include "bootstrap/track/cli.Brewfile" | sha256sum }}
+# cli.Brewfile hash: {{ include "bootstrap/track/homebrew/cli.Brewfile" | sha256sum }}
 
 if command -v brew &> /dev/null; then
-    brew bundle --file={{ joinPath .chezmoi.sourceDir "bootstrap/track/cli.Brewfile" | quote }}
+    brew bundle --file={{ joinPath .chezmoi.sourceDir "bootstrap/track/homebrew/cli.Brewfile" | quote }}
 fi
