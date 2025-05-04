@@ -36,9 +36,9 @@ def export_file(file_name, chezmoi_dir, zen_dir):
 
     if os.path.isfile(source_file):
         shutil.copy(source_file, destination_file)
-        print(f"Copied {source_file} to {destination_file}")
+        print(f"Copied '{source_file}' to '{destination_file}'")
     else:
-        print(f"Missing expected theme file: {source_file}", file=sys.stderr)
+        print(f"Missing expected theme file: '{source_file}'", file=sys.stderr)
 
 
 def main():
