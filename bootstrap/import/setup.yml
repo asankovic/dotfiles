@@ -47,7 +47,7 @@
           changed_when: false
 
         - name: Set theme directory and path
-          set_fact:
+          ansible.builtin.set_fact:
             bat_theme_dir: "{{ bat_config.stdout }}/themes"
             bat_theme_file: "{{ bat_config.stdout }}/themes/{{ bat_theme_name }}"
 
@@ -58,7 +58,7 @@
             mode: '0755'
 
         - name: Download the theme if it doesn't exist
-          get_url:
+          ansible.builtin.get_url:
             url: "{{ bat_theme_url }}"
             dest: "{{ bat_theme_file }}"
             mode: '0644'
@@ -83,7 +83,10 @@
               - org.wezfurlong.wezterm
 
         - name: Copy Zen Browser theme
-          script: ./zen_browser.py
+          ansible.builtin.script: ./zen_browser.py
+          register: result
+          failed_when: result.rc not in [0, 2]
+          changed_when: result.rc == 0
 
     - name: Copy desktop background
       ansible.builtin.copy:
