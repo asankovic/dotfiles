@@ -60,6 +60,8 @@ brew "trash-cli"
 brew "ugrep"
 # Cross-platform Rust rewrite of the GNU coreutils
 brew "uutils-coreutils"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
