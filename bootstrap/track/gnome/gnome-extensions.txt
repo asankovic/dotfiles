@@ -10,6 +10,7 @@ clipboard-indicator@tudmotu.com
 quick-settings-tweaks@qwreey
 color-picker@tuberry
 space-bar@luchrioh
+status-area-horizontal-spacing@mathematical.coffee.gmail.com
 appindicatorsupport@rgcjonas.gmail.com
 apps-menu@gnome-shell-extensions.gcampax.github.com
 blur-my-shell@aunetx
@@ -23,4 +24,3 @@ search-light@icedman.github.com
 tailscale@joaophi.github.com
 user-theme@gnome-shell-extensions.gcampax.github.com
 window-list@gnome-shell-extensions.gcampax.github.com
-status-area-horizontal-spacing@mathematical.coffee.gmail.com
