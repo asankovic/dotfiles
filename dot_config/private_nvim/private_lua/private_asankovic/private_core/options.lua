@@ -25,6 +25,7 @@ opt.sidescrolloff = 5
 
 opt.cursorline = true
 opt.wrap = false
+opt.signcolumn = 'yes'
 
 opt.ignorecase = true
 opt.smartcase = true

@@ -13,7 +13,7 @@ keymap.set("n", "U", "<C-r>", { desc = "Undo the latest undo" })
 
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Turn off highlighted search" })
 keymap.set("n", "<leader>hl", "<cmd>set hlsearch!<CR>", { desc = "Toggle highlighted search" })
-keymap.set("n", "<leader>n", "<cmd>set relativenumber!<CR>", { desc = "Toggle relative numbering" })
+keymap.set("n", "<leader>nn", "<cmd>set relativenumber!<CR>", { desc = "Toggle relative numbering" })
 
 keymap.set({ "n", "o", "x" }, "<s-h>", "^", { desc = "Jump to beginning of line" })
 keymap.set({ "n", "o", "x" }, "<s-l>", "g_", { desc = "Jump to end of line" })
@@ -49,7 +49,7 @@ keymap.set("n", "<C-w>>", ":vertical resize +10<CR>", { desc = "Expand size of s
 keymap.set("n", "<C-w>-", ":resize -10<CR>", { desc = "Reduce size of split horizontally." })
 keymap.set("n", "<C-w>+", ":resize +10<CR>", { desc = "Expand size of split horizontally." })
 
-keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make current file executable" })
+keymap.set("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make current file executable" })
 
 keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "Create new tab" })
 keymap.set("n", "gk", ":blast<CR>", { desc = "Move to last buffer in buffer list" })
