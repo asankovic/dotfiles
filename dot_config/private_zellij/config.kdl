@@ -146,7 +146,6 @@ keybinds clear-defaults=true {
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt x" { CloseFocus; SwitchToMode "normal"; }
-        bind "Ctrl q" { Quit; }
         bind "Alt y" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
                 "LOAD_ZELLIJ_BINDINGS"              "false"
