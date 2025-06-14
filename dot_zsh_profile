@@ -47,6 +47,9 @@ alias di="docker image"
 alias dl="docker logs"
 alias dv="docker volume"
 
+# K8S
+alias k="kubectl"
+
 # Directories
 alias ..="cd .."
 alias ...="cd ../.."
