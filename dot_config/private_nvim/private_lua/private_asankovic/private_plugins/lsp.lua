@@ -8,37 +8,13 @@ local function configureLsp()
       local opts = { buffer = ev.buf, silent = true }
 
       opts.desc = "See available code actions"
-      keymap.set({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts)
+      keymap.set({ "n", "x" }, "ga", vim.lsp.buf.code_action, opts)
 
       opts.desc = "Smart rename"
-      keymap.set("n", "<leader>re", vim.lsp.buf.rename, opts)
+      keymap.set({ "n", "x" }, "<leader>re", vim.lsp.buf.rename, opts)
 
       opts.desc = "Show signature help"
       keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
-
-      local client = vim.lsp.get_client_by_id(ev.data.client_id)
-      if client and client.server_capabilities.documentHighlightProvider then
-        local highlight_augroup = vim.api.nvim_create_augroup("asankovic-lsp-highlight", { clear = false })
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-          buffer = ev.buf,
-          group = highlight_augroup,
-          callback = vim.lsp.buf.document_highlight,
-        })
-
-        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-          buffer = ev.buf,
-          group = highlight_augroup,
-          callback = vim.lsp.buf.clear_references,
-        })
-      end
-    end,
-  })
-
-  vim.api.nvim_create_autocmd("LspDetach", {
-    group = vim.api.nvim_create_augroup("asankovic-lsp-detach", { clear = true }),
-    callback = function(event)
-      vim.lsp.buf.clear_references()
-      vim.api.nvim_clear_autocmds({ group = "asankovic-lsp-highlight", buffer = event.buf })
     end,
   })
 end

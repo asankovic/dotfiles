@@ -3,7 +3,12 @@ vim.g.maplocalleader = " "
 
 local keymap = vim.keymap
 
-keymap.set("n", "\"\"", "<cmd>registers \"0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>", {silent = true, desc = "Toggle case under cursor and start typing."})
+keymap.set(
+  "n",
+  '""',
+  '<cmd>registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>',
+  { silent = true, desc = "Toggle case under cursor and start typing." }
+)
 keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
@@ -51,33 +56,25 @@ keymap.set("n", "<C-w>+", ":resize +10<CR>", { desc = "Expand size of split hori
 
 keymap.set("n", "<leader>xe", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make current file executable" })
 
-keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "Create new tab" })
-keymap.set("n", "gk", ":blast<CR>", { desc = "Move to last buffer in buffer list" })
-keymap.set("n", "gj", ":bfirst<CR>", { desc = "Move to first buffer in buffer list" })
-keymap.set("n", "gh", ":bprev<CR>", { desc = "Move to previous buffer in buffer list" })
-keymap.set("n", "gl", ":bnext<CR>", { desc = "Move to next buffer in buffer list" })
-keymap.set("n", "<leader>w", "<cmd>bp|bd #<CR>", { desc = "Close Buffer; Retain Split" })
-keymap.set("n", "<leader>q", "<cmd>bd<CR>", { desc = "Close Buffer" })
-
 function CopyReference()
-	local current_buffer = vim.api.nvim_get_current_buf()
-	local file_name = vim.api.nvim_buf_get_name(current_buffer)
-	local project_root = vim.fn.getcwd()
-	local relative_file_name = vim.fn.fnamemodify(file_name, ":~:.")
-	local line_number = vim.fn.line(".")
-	if project_root ~= "" then
-		local path_with_line = relative_file_name .. ":" .. line_number
-		print("Relative path copied to system and yank registers: " .. path_with_line)
-		vim.fn.setreg("+", path_with_line)
-		vim.fn.setreg('"', path_with_line)
-	else
-		print("File not within a project.")
-	end
+  local current_buffer = vim.api.nvim_get_current_buf()
+  local file_name = vim.api.nvim_buf_get_name(current_buffer)
+  local project_root = vim.fn.getcwd()
+  local relative_file_name = vim.fn.fnamemodify(file_name, ":~:.")
+  local line_number = vim.fn.line(".")
+  if project_root ~= "" then
+    local path_with_line = relative_file_name .. ":" .. line_number
+    print("Relative path copied to system and yank registers: " .. path_with_line)
+    vim.fn.setreg("+", path_with_line)
+    vim.fn.setreg('"', path_with_line)
+  else
+    print("File not within a project.")
+  end
 end
 
 keymap.set(
-	"n",
-	"<leader>cr",
-	":lua CopyReference()<CR>",
-	{ desc = "Copy path and line of the current file, relative to the cwd" }
+  "n",
+  "<leader>cr",
+  ":lua CopyReference()<CR>",
+  { desc = "Copy path and line of the current file, relative to the cwd" }
 )

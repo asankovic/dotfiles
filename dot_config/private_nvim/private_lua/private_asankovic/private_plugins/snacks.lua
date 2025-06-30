@@ -10,7 +10,7 @@ return {
       notifier = { enabled = true, timeout = 3000, },
       quickfile = { enabled = true },
       scroll = { enabled = true },
-      picker = { enabled = true },
+      picker = { enabled = true, matcher = { frecency = true } },
       words = { enabled = true },
       dashboard = {
         enabled = true,
@@ -76,7 +76,7 @@ return {
       { "<leader>nc", function() Snacks.notifier.hide() end, desc = "[N]otifications [C]lear" },
       { "<leader>rn", function() Snacks.words.jump(vim.v.count1) end, desc = "[R]eference [N]ext", mode = { "n", "t" } },
       { "<leader>rp", function() Snacks.words.jump(-vim.v.count1) end, desc = "[R]eference [P]revious", mode = { "n", "t" } },
-      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<C-q>", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     },
     init = function()
       vim.api.nvim_create_autocmd("User", {
@@ -85,16 +85,18 @@ return {
           Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>ts")
           Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>tw")
           Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>tn")
+          Snacks.toggle.option("hlsearch", { name = "Higlight Search" }):map("<leader>th")
           Snacks.toggle.line_number():map("<leader>tl")
           Snacks.toggle.diagnostics():map("<leader>td")
           Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>tc")
           Snacks.toggle.treesitter():map("<leader>tT")
           Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>tb")
-          Snacks.toggle.inlay_hints():map("<leader>th")
+          Snacks.toggle.inlay_hints():map("<leader>ti")
           Snacks.toggle.indent():map("<leader>tg")
           Snacks.toggle.dim():map("<leader>tD")
+          Snacks.toggle.words():map("<leader>tr")
         end,
-      })
+    })
     end,
   }
 }

@@ -32,6 +32,11 @@ return {
     },
     opts = {
       lsp = {
+        hover = {
+          -- Set not show a message if hover is not available
+          -- ex: shift+k on Typescript code
+          silent = true,
+        },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
@@ -53,7 +58,7 @@ return {
     opts = {},
     keys = {
       {
-        "\\",
+        "<CR>",
         mode = { "n", "x", "o" },
         function()
           require("flash").jump()
