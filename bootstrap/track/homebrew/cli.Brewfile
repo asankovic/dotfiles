@@ -1,5 +1,7 @@
 tap "jesseduffield/lazydocker"
 tap "jesseduffield/lazygit"
+# Run your GitHub Actions locally
+brew "act"
 # Automate deployment, configuration, and upgrading
 brew "ansible"
 # Improved shell history for zsh, bash, fish and nushell
@@ -14,6 +16,10 @@ brew "chezmoi"
 brew "choose-rust"
 # Power of curl, ease of use of httpie
 brew "curlie"
+# Platform built on V8 to build network applications
+brew "node"
+# Reference implementation for the Development Containers specification
+brew "devcontainer"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -40,12 +46,12 @@ brew "kubernetes-cli"
 brew "kubectx"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Platform built on V8 to build network applications
-brew "node"
 # CLI for Postgres with auto-completion and syntax highlighting
 brew "pgcli"
 # Modern replacement for ps written in Rust
 brew "procs"
+# SVG rendering tool and library
+brew "resvg"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Intuitive find & replace CLI
