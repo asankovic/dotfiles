@@ -5,24 +5,23 @@ return {
   {
     "mfussenegger/nvim-lint",
     event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      linters_by_ft = {
+    config = function()
+      local lint = require("lint")
+      lint.linters_by_ft = {
         javascript = eslint,
         typescript = eslint,
-      },
-    },
-    config = function()
-      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+      }
 
+      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
         group = lint_augroup,
         callback = function()
-          require("lint").try_lint(nil, { ignore_errors = true })
+          lint.try_lint(nil, { ignore_errors = true })
         end,
       })
 
       vim.keymap.set("n", "<leader>ll", function()
-        require("lint").try_lint(nil, { ignore_errors = true })
+        lint.try_lint(nil, { ignore_errors = true })
       end, { desc = "File [L]int" })
     end,
   },
