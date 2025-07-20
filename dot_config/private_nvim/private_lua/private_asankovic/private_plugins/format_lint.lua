@@ -10,6 +10,7 @@ return {
       lint.linters_by_ft = {
         javascript = eslint,
         typescript = eslint,
+        go = { "golangcilint" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -34,6 +35,7 @@ return {
         javascript = prettier,
         typescript = prettier,
         lua = { "stylua" },
+        go = { "gofumpt" }
       },
     },
     keys = {

@@ -4,7 +4,7 @@ return {
     { "mason-org/mason.nvim", opts = {} },
     {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      opts = { ensure_installed = { "prettierd", "eslint_d", "stylua" } },
+      opts = { ensure_installed = { "prettierd", "stylua", "gofumpt" } },
     },
   },
   opts = {
@@ -19,6 +19,7 @@ return {
       "dockerls",
       "emmet_ls",
       "gh_actions_ls",
+      "gopls",
       "graphql",
       "helm_ls",
       "html",
