@@ -22,6 +22,7 @@ return {
         "javascript",
         "json",
         "lua",
+        "make",
         "proto",
         "query",
         "scss",
