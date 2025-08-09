@@ -14,6 +14,8 @@ brew "bottom"
 brew "chezmoi"
 # Human-friendly and fast alternative to cut and (sometimes) awk
 brew "choose-rust"
+# Apjanke's fork of the classic cowsay project
+brew "cowsay"
 # Power of curl, ease of use of httpie
 brew "curlie"
 # Platform built on V8 to build network applications
@@ -22,6 +24,8 @@ brew "node"
 brew "devcontainer"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# Tool for exploring each layer in a docker image
+brew "dive"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -34,10 +38,16 @@ brew "fd"
 brew "fzf"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # Ping, but with a graph
 brew "gping"
 # Kubernetes package manager
 brew "helm"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Handy way to save and run project-specific commands
+brew "just"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
 # Kubernetes command-line interface
