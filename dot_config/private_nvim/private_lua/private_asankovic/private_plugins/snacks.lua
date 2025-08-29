@@ -69,7 +69,7 @@ return {
 
       -- Misc
       { "<leader>et", mode = { "n" }, function() Snacks.explorer.open() end, desc = "Open explorer tree" },
-      { "<leader>rf", function() Snacks.rename.rename_file() end, desc = "[R]e[n]ame File" },
+      { "<leader>rf", function() Snacks.rename.rename_file() end, desc = "[R]ename [F]ile" },
       { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
       { "<leader>S", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
       { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "[N]otification [H]istory" },
