@@ -1,5 +1,6 @@
 tap "jesseduffield/lazydocker"
 tap "jesseduffield/lazygit"
+tap "sdkman/tap"
 # Run your GitHub Actions locally
 brew "act"
 # Automate deployment, configuration, and upgrading
@@ -94,4 +95,6 @@ brew "zsh-syntax-highlighting"
 brew "jesseduffield/lazydocker/lazydocker"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
+# SDKMAN! the Software Development Kit Manager
+brew "sdkman/tap/sdkman-cli"
 cask "font-fira-code-nerd-font"
