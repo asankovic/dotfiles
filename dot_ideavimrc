@@ -9,10 +9,8 @@ set mouse=a
 set updatetime=250
 
 set list
-"set listchars=tab:»\ ,trail:·,nbsp:␣
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
-"using https://plugins.jetbrains.com/plugin/7414-relative-line-numbers for side by side display
 set relativenumber
 set number
 
@@ -40,22 +38,18 @@ set incsearch
 "" Show register content (in IntelliJ using peakaboo plugin)
 nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
-"" Exit insert mode
 inoremap jk <ESC>
 
-"" Quality of life things
 nnoremap Q <Nop>
 nnoremap U <C-r>
 
 nnoremap <Esc> :nohlsearch<CR>
 nnoremap <leader>hl :set hlsearch!<CR>
-nnoremap <leader>n :set relativenumber!<CR>
+nnoremap <leader>nn :set relativenumber!<CR>
+"" Redundant, but keeping consistent with Neovim
+nnoremap <leader>th :set hlsearch!<CR>
+nnoremap <leader>tn :set relativenumber!<CR>
 
-" Disable space key in normal and visual modes
-nnoremap <Space> <Nop>
-vnoremap <Space> <Nop>
-
-"" Moving to start and end of line
 nnoremap L g_
 nnoremap H ^
 xnoremap L g_
@@ -63,16 +57,12 @@ xnoremap H ^
 onoremap L g_
 onoremap H ^
 
-"" Insert new empty line
 nmap zj o<ESC>k
 nmap zk O<ESC>j
 
-"" Indent keeping selection
 xnoremap < <gv
 xnoremap > >gv
 xnoremap = =gv
-
-" Select everything
 nnoremap == gg<S-v>G
 
 "" Toggle case and start typing
@@ -83,11 +73,9 @@ xmap <leader>ud d~h
 " Search for highlighted text
 vnoremap // "sy/<C-R>s<CR>
 
-" Yank to system register
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 
-" Paste from system register
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
@@ -117,50 +105,70 @@ if has("ide")
 
         " ------------------------------ Plugins  ------------------------------
         " https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
-        set highlightedyank
+        " set which-key
         set NERDTree
-        "set sneak
-        set surround
-        set argtextobj
-        set multiple-cursors
-        set quickscope
-        set vim-paragraph-motion
         set ReplaceWithRegister
+        set argtextobj
+        set commentary
+        set easymotion
+        set exchange
+        set functiontextobj
+        set highlightedyank
+        set mini-ai
+        set multiple-cursors
+        set peekaboo
+        set quickscope
+        set surround
         set textobj-entire
         set textobj-indent
-        set easymotion
-        set commentary
-        set exchange
-        set peekaboo
-        set functiontextobj
-        " set matchit
+        set vim-paragraph-motion
 
-        "" Var configs
+        " ArgTextObjPairs
         let g:argtextobj_pairs = "[:],(:),<:>"
+
+        " Highlighted yank
         let g:highlightedyank_highlight_color = "rgba(202, 148, 226, 155)"
-        let g:exchange_indent = "=="
-        let g:qs_primary_color = "#FF0000"
-        let g:qs_secondary_color = "#FF1493"
+
+        " QuickScope
+        let g:qs_primary_color = "#F38BA8"
+        let g:qs_secondary_color = "#EBA0AC"
         let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-        " let b:match_words = "<:>,<tag>:</tag>,if:fi"
 
-        "" exchange - for some reason need to redefine it
+        " EasyMotion
+        let g:EasyMotion_do_mapping = 0
+        nmap <CR> <Plug>(easymotion-jumptoanywhere)
+
+        " Exchange
+        let g:exchange_indent = "=="
+        nmap gx <Plug>(Exchange)
         xmap X <Plug>(Exchange)
-        "nmap <leader>e :NERDTree <CR>
-        nmap - :NERDTreeToggle <CR>
+        nmap gxc <Plug>(ExchangeClear)
+        nmap gxx <Plug>(ExchangeLine)
 
+        " NERDTree
+        nmap <leader>ee :NERDTree <CR>
+        nmap <leader>et :NERDTreeToggle <CR>
 
-        "" multiple-cursors
-        nmap ma <Plug>AllWholeOccurrences
-        nmap mg <Plug>AllOccurrences
-        nmap mc <Plug>NextWholeOccurrence
-        nmap mx <Plug>SkipOccurrence
-        nmap mb <Plug>RemoveOccurrence
-        xmap ma <Plug>AllWholeOccurrences
-        xmap mg <Plug>AllOccurrences
-        xmap mc <Plug>NextWholeOccurrence
-        xmap mx <Plug>SkipOccurrence
-        xmap mb <Plug>RemoveOccurrence
+        " Surround
+        let g:surround_no_mappings = 1
+        let g:surround_no_insert_mappings = 1
+        nmap sa <Plug>YSurround
+        xmap sa <Plug>VSurround
+        nmap sd <Plug>DSurround
+        nmap sr <Plug>CSurround
+
+        " Multiple-cursors
+        let g:multi_cursor_quit_key = 'j'
+        nmap <C-n> <Plug>NextWholeOccurrence
+        xmap <C-n> <Plug>NextWholeOccurrence
+        nmap g<C-n> <Plug>NextOccurrence
+        xmap g<C-n> <Plug>NextOccurrence
+        xmap <C-x> <Plug>SkipOccurrence
+        xmap <C-p> <Plug>RemoveOccurrence
+        nmap <leader><C-n> <Plug>AllWholeOccurrences
+        xmap <leader><C-n> <Plug>AllWholeOccurrences
+        nmap <leader>g<C-n> <Plug>AllOccurrences
+        xmap <leader>g<C-n> <Plug>AllOccurrences
         " ----------------------------------------------------------------------
 
         " -------------------------- Intellij Actions  -------------------------
@@ -171,61 +179,47 @@ if has("ide")
         nmap [[ <Action>(MethodUp)
         nmap ]] <Action>(MethodDown)
         nmap gs <Action>(GotoSuperMethod)
-        nmap gi <Action>(GotoImplementation)
+        nmap gI <Action>(GotoImplementation)
         nmap g; <Action>(JumpToLastChange)
         nmap g, <Action>(JumpToNextChange)
-        " Go to usage and declaration are the same action in IntelliJ
-        "nmap gu <Action>(GotoDeclaration)
         nmap gd <Action>(GotoDeclaration)
         nmap gt <Action>(GotoTypeDeclaration)
+        nmap gT <Action>(GotoTest)
+
+        nmap g: <Action>(GotoAction)
         nmap <leader>fe <Action>(RecentFiles)
-        " gc collides with commentary
         map <leader>fc <Action>(GotoClass)
         map <leader>ff <Action>(GotoFile)
-        nmap g: <Action>(GotoAction)
         map <leader>fa <Action>(FindInPath)
         nmap <leader>fs <Action>(FileStructurePopup)
 
         "" Usages
         nmap <leader>fU <Action>(FindUsages)
         nmap <leader>fu <Action>(ShowUsages)
-        "nmap <leader>uh <Action>(HighlightUsagesInFile)
 
-        "" Tests and running
+        "" Running
         nmap <leader>rr <Action>(Run)
         nmap <leader>rs <Action>(Stop)
         nmap <leader>rd <Action>(Debug)
         nmap <leader>rc <Action>(RunClass)
-        nmap <leader>ft <Action>(GotoTest)
 
         "" Generating
-        nmap <leader>ns <Action>(NewScratchFile)
+        nmap <leader>. <Action>(NewScratchBuffer)
         nmap <leader>ge <Action>(Generate)
-        nmap <leader>im <Action>(ImplementMethods)
-        nmap <leader>or <Action>(OverrideMethods)
+        map ga <Action>(ShowIntentionActions)
 
-        "" Formatting
+        "" Formatting & Refactoring
         nmap <leader>fo <Action>(ReformatCode)<Action>(OptimizeImports)
         xmap <leader>fo <Action>(ReformatCode)
         nmap <leader>fd <Action>(ShowReformatFileDialog)
-        nmap ga <Action>(ShowIntentionActions)
         map <leader>re <Action>(RenameElement)
+        map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+        map <leader>rs <Action>(SurroundWith)
 
         "" Quick manipulating lines
         xmap K <Action>(MoveLineUp)
         xmap J <Action>(MoveLineDown)
         nmap J <Action>(EditorJoinLines)
-
-        "" Extracting
-        map <leader>ev <Action>(IntroduceVariable)
-        map <leader>em <Action>(ExtractMethod)
-        map <leader>ec <Action>(IntroduceConstant)
-        map <leader>ef <Action>(IntroduceField)
-        map <leader>ep <Action>(IntroduceParameter)
-        map <leader>s <Action>(SurroundWith)
-        "Kotlin overrides
-        "map <leader>em <Action>(ExtractFunction)
-        "map <leader>ef <Action>(IntroduceProperty)
 
         "" Code completion
         imap <C-j> <Action>(CodeCompletion)
@@ -235,14 +229,7 @@ if has("ide")
         "" Windows and editor tabs
         nnoremap gk gt
         nnoremap gj gT
-
         nmap <C-q> <Action>(CloseEditor)
-        nmap _ <Action>(CloseAllEditorsButActive)
-        nmap + <Action>(HideAllWindows)
-        nmap \ <Action>(HideActiveWindow)
-        nmap ^ <Action>(JumpToLastWindow)
-        nmap <C-t> <Action>(ActivateProjectToolWindow)
-        "nmap <leader>xx <Action>(ActivateProblemsViewToolWindow)
 
         "" Hierarchies
         nmap <leader>hc <Action>(CallHierarchy)
@@ -251,7 +238,6 @@ if has("ide")
 
         "" Bookmarks
         nmap <C-m> <Action>(ToggleBookmark)
-        "nmap <leader>fm <Action>(ShowBookmarks)
         nmap <leader>fm <Action>(ActivateBookmarksToolWindow)
 
         "" Expanding and collapsing
@@ -277,16 +263,17 @@ if has("ide")
         nmap K <Action>(ShowHoverInfo)
         nmap [d <Action>(GotoPreviousError)
         nmap ]d <Action>(GotoNextError)
-        nmap <leader>ii <Action>(QuickImplementations)
-        nmap <leader>ip <Action>(ParameterInfo)
-        nmap <leader>it <Action>(ExpressionTypeInfo)
+        map <C-k> <Action>(ParameterInfo)
         nmap <leader>cr <Action>(CopyReference)
+        nmap <leader>qi <Action>(QuickImplementations)
+        nmap <leader>qt <Action>(ExpressionTypeInfo)
 
         "" Quick lists
-        nmap <leader>lw <Action>(QuickList.Look at all those windows)
-        map <leader>lr <Action>(QuickList.Refactor magic)
-        nmap <leader>ld <Action>(QuickList.Advanced debug)
-        map <leader>li <Action>(QuickList.Code police)
+        nmap <leader>sw <Action>(QuickList.Look at all those windows)
+        map <leader>sr <Action>(QuickList.Refactor magic)
+        nmap <leader>sd <Action>(QuickList.Advanced debug)
+        map <leader>si <Action>(QuickList.Code police)
+        nmap <leader>se <Action>(QuickList.Editor & window manipulation)
 
         " Git
         nmap ]g <Action>(VcsShowNextChangeMarker)
@@ -294,22 +281,6 @@ if has("ide")
         nmap <leader>gd <Action>(Vcs.ShowDiffChangedLines)
         nmap <leader>gb <Action>(Annotate)
         nmap <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
-        nmap <leader>zm <Action>(ToggleZenMode)
-        "Harpoon
-        nmap <leader>ha <Action>(GotoHarpoon1)
-        nmap <leader>hs <Action>(GotoHarpoon2)
-        nmap <leader>hd <Action>(GotoHarpoon3)
-        nmap <leader>hf <Action>(GotoHarpoon4)
-        nmap <leader>hg <Action>(GotoHarpoon5)
-
-        nmap <leader>Ha <Action>(SetHarpoon1)
-        nmap <leader>Hs <Action>(SetHarpoon2)
-        nmap <leader>Hd <Action>(SetHarpoon3)
-        nmap <leader>Hf <Action>(SetHarpoon4)
-        nmap <leader>Hg <Action>(SetHarpoon5)
-
-        nmap <leader>fh <Action>(ShowHarpoon)
-        nmap <leader>hh <Action>(AddToHarpoon)
 
         nmap <D-l> <Action>(NextProjectWindow)
 
