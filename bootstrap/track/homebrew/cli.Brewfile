@@ -1,5 +1,4 @@
 tap "jesseduffield/lazydocker"
-tap "jesseduffield/lazygit"
 tap "sdkman/tap"
 # Run your GitHub Actions locally
 brew "act"
@@ -55,6 +54,8 @@ brew "k9s"
 brew "kubernetes-cli"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # CLI for Postgres with auto-completion and syntax highlighting
@@ -93,8 +94,6 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 # A simple terminal UI for docker, written in Go
 brew "jesseduffield/lazydocker/lazydocker"
-# A simple terminal UI for git commands, written in Go
-brew "jesseduffield/lazygit/lazygit"
 # SDKMAN! the Software Development Kit Manager
 brew "sdkman/tap/sdkman-cli"
 cask "font-fira-code-nerd-font"
