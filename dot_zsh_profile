@@ -113,3 +113,9 @@ function y() {
   fi
   rm -f -- "$tmp"
 }
+
+# Still finding IntelliJ superior to Neovim for Java related development
+# Devcontainer support is still poor though, hence using sdkman
+# Keeping the env variable here to be in one place
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
