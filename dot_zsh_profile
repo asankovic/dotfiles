@@ -6,6 +6,7 @@ alias cl="clear"
 alias nv="nvim"
 alias gg="lazygit"
 alias dd="lazydocker"
+alias cc="curlie"
 
 # CLI
 alias cat=bat
