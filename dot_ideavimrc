@@ -196,7 +196,7 @@ if has("ide")
         nmap <leader>fu <Action>(ShowUsages)
 
         "" Running
-        nmap <leader>rr <Action>(Run)
+        nmap <leader>rn <Action>(Run)
         nmap <leader>rs <Action>(Stop)
         nmap <leader>rd <Action>(Debug)
         nmap <leader>rc <Action>(RunClass)
