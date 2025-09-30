@@ -196,14 +196,13 @@ if has("ide")
         nmap <leader>fu <Action>(ShowUsages)
 
         "" Running
-        nmap <leader>rn <Action>(Run)
-        nmap <leader>rs <Action>(Stop)
-        nmap <leader>rd <Action>(Debug)
-        nmap <leader>rc <Action>(RunClass)
+        nmap <leader>rn <Action>(ChooseRunConfiguration)
+        nmap <leader>rq <Action>(Stop)
+        nmap <leader>r. <Action>(RunClass)
 
         "" Generating
         nmap <leader>. <Action>(NewScratchBuffer)
-        nmap <leader>ge <Action>(Generate)
+        map ge <Action>(Generate)
         map ga <Action>(ShowIntentionActions)
 
         "" Formatting & Refactoring
@@ -244,16 +243,14 @@ if has("ide")
         nmap zO <Action>(ExpandAllRegions)
 
         "" Debug
-        nmap <leader>dd <Action>(Debug)
         nmap <leader>dn <Action>(StepOver)
         nmap <leader>do <Action>(StepOut)
         nmap <leader>di <Action>(StepInto)
         nmap <leader>dr <Action>(Resume)
-        nmap <leader>ds <Action>(Stop)
         nmap <leader>dc <Action>(RunToCursor)
         map <leader>de <Action>(EvaluateExpression)
-        nmap <leader>db <Action>(ToggleLineBreakpoint)
-        nmap <leader>dt <Action>(XDebugger.MuteBreakpoints)
+        nmap <leader>dd <Action>(ToggleLineBreakpoint)
+        nmap <leader>dt <Action>(ToggleBreakpointEnabled)
         nmap <leader>fb <Action>(ViewBreakpoints)
 
         "" Others
@@ -266,7 +263,7 @@ if has("ide")
         nmap <leader>qt <Action>(ExpressionTypeInfo)
 
         "" Quick lists
-        nmap <leader>sw <Action>(QuickList.Look at all those windows)
+        nmap <leader>sj <Action>(QuickList.Look at all those windows)
         nmap <leader>sd <Action>(QuickList.To ne dela?)
         map <leader>si <Action>(QuickList.Code police)
         nmap <leader>se <Action>(QuickList.It's leviOsa, not levioSA!)
