@@ -47,21 +47,12 @@ nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 inoremap jk <ESC>
 
 "" Quality of life things
-nnoremap Q <Nop>
-nnoremap U <C-r>
+nnoremap Q @q
 
 " Turn off highlighted search
 nnoremap <Esc> :nohlsearch<CR>
 nnoremap <leader>hl :set hlsearch!<CR>
 nnoremap <leader>n :set relativenumber!<CR>
-
-"" Moving to start and end of line
-nnoremap L g_
-nnoremap H ^
-xnoremap L g_
-xnoremap H ^
-onoremap L g_
-onoremap H ^
 
 "" Insert new empty line
 nmap zj o<ESC>k
@@ -105,4 +96,8 @@ nnoremap <C-u> <C-u>zz
 " Keep the selection in the middle of the screen
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+" Tab navigation
+nnoremap gk gt
+nnoremap gj gT
 " ======================================================================

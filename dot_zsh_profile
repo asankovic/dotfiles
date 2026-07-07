@@ -7,6 +7,7 @@ alias nv="nvim"
 alias gg="lazygit"
 alias dd="lazydocker"
 alias cc="curlie"
+alias py="python3"
 
 # CLI
 alias cat=bat
@@ -48,8 +49,9 @@ alias di="docker image"
 alias dl="docker logs"
 alias dv="docker volume"
 
-# K8S
+# K8S & Helm
 alias k="kubectl"
+alias h="helm"
 
 # Directories
 alias ..="cd .."

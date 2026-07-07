@@ -13,15 +13,11 @@ keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
-keymap.set("n", "Q", "<nop>", { desc = "Nope." })
-keymap.set("n", "U", "<C-r>", { desc = "Undo the latest undo" })
+keymap.set("n", "Q", "@q", { desc = "Run macro q" })
 
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Turn off highlighted search" })
 keymap.set("n", "<leader>hl", "<cmd>set hlsearch!<CR>", { desc = "Toggle highlighted search" })
 keymap.set("n", "<leader>nn", "<cmd>set relativenumber!<CR>", { desc = "Toggle relative numbering" })
-
-keymap.set({ "n", "o", "x" }, "<s-h>", "^", { desc = "Jump to beginning of line" })
-keymap.set({ "n", "o", "x" }, "<s-l>", "g_", { desc = "Jump to end of line" })
 
 keymap.set("n", "zj", "o<ESC>k", { desc = "Insert an empty line below." })
 keymap.set("n", "zk", "O<ESC>j", { desc = "Insert an empty line above." })
