@@ -1,7 +1,6 @@
 tap "jesseduffield/lazydocker"
+tap "jesseduffield/lazygit"
 tap "sdkman/tap"
-# Run your GitHub Actions locally
-brew "act"
 # Automate deployment, configuration, and upgrading
 brew "ansible"
 # Improved shell history for zsh, bash, fish and nushell
@@ -12,13 +11,11 @@ brew "bat"
 brew "bottom"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-# Human-friendly and fast alternative to cut and (sometimes) awk
-brew "choose-rust"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
 # Power of curl, ease of use of httpie
 brew "curlie"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Reference implementation for the Development Containers specification
 brew "devcontainer"
@@ -34,6 +31,8 @@ brew "dust"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Terminal JSON viewer
+brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Syntax-highlighting pager for git and diff output
@@ -46,20 +45,16 @@ brew "gping"
 brew "helm"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Handy way to save and run project-specific commands
-brew "just"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# CLI for Postgres with auto-completion and syntax highlighting
-brew "pgcli"
 # Modern replacement for ps written in Rust
 brew "procs"
 # SVG rendering tool and library
@@ -72,14 +67,8 @@ brew "sd"
 brew "starship"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
-# General purpose fuzzy finder TUI
-brew "television"
 # Command-line interface to the freedesktop.org trashcan
 brew "trash-cli"
-# Ultra fast grep with query UI, fuzzy search, archive search, and more
-brew "ugrep"
-# Cross-platform Rust rewrite of the GNU coreutils
-brew "uutils-coreutils"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -93,7 +82,7 @@ brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # A simple terminal UI for docker, written in Go
-brew "jesseduffield/lazydocker/lazydocker"
+brew "jesseduffield/lazydocker/lazydocker", trusted: true
 # SDKMAN! the Software Development Kit Manager
-brew "sdkman/tap/sdkman-cli"
+brew "sdkman/tap/sdkman-cli", trusted: true
 cask "font-fira-code-nerd-font"

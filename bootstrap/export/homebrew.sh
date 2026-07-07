@@ -10,7 +10,7 @@ fi
 
 echo "Starting Brewfile export and removing VS Code extensions from the dump..."
 
-brew bundle dump --file="$BREWFILE" --describe --force
+brew bundle dump --file="$BREWFILE" --force
 sd '^vscode.*\r?\n?' '' "$BREWFILE"
 
 echo "Brewfile successfully exported to '$(realpath "$BREWFILE")'."
